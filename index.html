@@ -19,7 +19,7 @@
             max-width: 400px;
             min-width: 300px;
             min-height: 400px;
-            max-height: 600px;
+            max-height: 700px;
             background: #121212;
             border-radius: 20px;
             box-shadow: 0 0px 30px rgba(15, 15, 15, 0.9);
@@ -27,6 +27,7 @@
             box-sizing: border-box;
             transition-duration: 0.7s;
             transform: scale(1.2);
+            
         }
         .container:hover{
             transform:scale(130%);
@@ -45,14 +46,14 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-            background: linear-gradient(to top,#121212 55%,transparent);
+            background: linear-gradient(to top,#121212 63%,transparent);
         }
         .content{
             position: absolute;
             bottom: 0;
             z-index: 2;
             width: 100%;
-            height: 330px;
+            height: 70%;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -60,7 +61,7 @@
         }
         form{
             width: 260px;
-            height: 200px;
+            
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -79,7 +80,8 @@
             background: #333333;
             padding: 0 10px;
         }
-        form button{
+        #signbutton{
+            width: 65%;
             background: #aecb36;
             color: #fff;
         }
@@ -87,31 +89,189 @@
             color: #737373;
 
         }
-        .content a{
-            text-decoration: none;
+        a{
+            text-decoration: underline;
             color: #5573a5;
-            border-bottom: 1px dotted;
         }
+        .transback{
+            background-color: transparent;
+            color: rgb(100, 197, 61);
+            transition-duration: 0.3s;
+        }
+        .transback:hover{
+            transform: scale(1.05);
+            color:#5573a5;
+            cursor: pointer;
+            transition-duration: 0.3s;
+        }
+        #eleonsignup{
+            display: none;
+            transition-duration: 0.4s;
+        }
+        #eleonsignin{
+            display: none;
+            transition-duration: 0.4s;
+        }
+        
     </style>
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
+        async function OpenSignup(){
+            document.getElementById("signin").style.display="none";
+            document.getElementById("signup").style.display="block";
+            document.getElementById("texonbutton").textContent="sign up"
+            document.getElementById("container").style.height="70%"
+            signin=document.getElementById("eleonsignin")
+            
+            signin.style.display="none"
+            signup=document.getElementById("eleonsignup")
+            
+            signup.style.display="block"
+
+            await sleep(200); 
+            signup.style.transform="scale(1)"
+            
+            
+
+            
+
+        }
+        async function OpenSignin(){
+            document.getElementById("signin").style.display="block";
+            document.getElementById("signup").style.display="none";
+            document.getElementById("texonbutton").textContent="sign in"
+            document.getElementById("container").style.height="55%"
+            signup=document.getElementById("eleonsignup")
+            signup.style.transform="scale(3)"
+            await sleep(400);
+            signup.style.display="none"
+            signin=document.getElementById("eleonsignin")
+            
+            signin.style.display="block"
+            signin.style.transform="scale(1)"
+            
+           
+
+        }
+        function checkEmail() { 
+            //alert("entered")
+            var email = document.getElementById('txtEmail');
+            var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (!filter.test(email.value)) {
+            alert('Please provide a valid email address');
+            
+            
+            return false;
+            }
+           return true
+        }
+        function checkFName() {
+            //alert("entered")
+            var email = document.getElementById('txtfname');
+            var filter = /^[a-zA-Z]{1,}$/;
+            if (!filter.test(email.value)) {
+            alert('Please provide a valid Firstname');
+            email.focus;
+            return false;
+            }
+           return true
+        }
+        function checkLName() {
+            //alert("entered")
+            var email = document.getElementById('txtlname');
+            var filter = /^[a-zA-Z]{1,}$/;
+            if (!filter.test(email.value)) {
+            alert('Please provide a valid LastName');
+            email.focus;
+            return false;
+            }
+           return true
+        }
+        function checkNumber() {
+            //alert("entered")
+            var email = document.getElementById('txtNum');
+            var filter = /^(9|8|7|6)[0-9]{9}$/;
+            if (!filter.test(email.value)) {
+            alert('Please provide a valid mobile Number');
+            email.focus;
+            return false;
+            }
+           return true
+        }
+        function checkPassword1(){
+            pass=document.getElementById("pass").value
+                if (pass==""){
+                    alert("no text found in password")
+                    return false
+                }
+                return true
+        }
+        function checkEmail1(){
+            var email = document.getElementById('txtEmail1');
+            var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (!filter.test(email.value)) {
+            alert('Please provide a valid email address');
+            email.focus;
+            return false;
+            }
+           return true
+
+
+        }
+        function checkform(){
+            if(document.getElementById("eleonsignin").style.display=="none"){
+                if (checkEmail() && checkFName() && checkLName() && checkNumber() ){
+                    alert("succesfully validated")
+
+                }
+            }
+            else{
+                if(checkEmail1() && checkPassword1()){
+                    alert("validated successfully proceed to login")
+
+                }
+                
+            }
+        }
+
+    </script>
 </head>
-    <div class="container">
-    <body>
+    <div class="container" id="container">
+    <body onload="OpenSignin()">
     <div class="bg-img"></div>
     <div class="content">
-        <form>
-            <div>
-                <input type="email" name="email" placeholder="Email"/>
-                <input type="password" name="password" placeholder="********"/>
+        
+            <div id="eleonsignin">
+                <form>
+                <input type="email" name="email" placeholder="Email" id="txtEmail1"/>
+                <input type="password" name="password" placeholder="********" id="pass"/>
+                  
+                </form>
+                
 
             </div>
-            <br>
-            <script >
-            </script>
-            <button >Sign in</button>
-        </form>
-        <a href="#">Forgot password? </a>
-        <br>    
-        <p>New to Sureify? <a href="#">Sign up now</a></p><br>
+            <div id="eleonsignup">
+                <form>
+                <input type="email" name="email" placeholder="Email" id="txtEmail" onchange="checkEmail()" value="mail@mail-domain.com"/>
+                <input type="text" name="first" placeholder="your first name here" id="txtfname" onchange="checkFName()" value="firstname">
+                <input type="text" name="last" placeholder="your last name here" id="txtlname" onchange="checkLName()" value="lastname">
+                <input type="text" name="mobile" placeholder="your mobile number"id="txtNum" onchange="checkNumber()" value="910000">
+                <input type="password" name="password" placeholder="********"/>
+                <input type="password" name="cofirmpassword" placeholder="confirm password" ><br>
+                
+                </form>
+            </div>  
+        <button id="signbutton" onclick="checkform()"><span id="texonbutton">sign in</span></button>
+        <div id="signin" style="display: block;"> <center>
+            <a href="#" style="display: block;">Forgot password?</a></center>
+         
+        <p>New to Sureify? &nbsp <button class="transback" onclick="OpenSignup()">Sign up now</button></p></div>
+        <div id="signup" style="display:none">  
+            <p>Already on Sureify? &nbsp <button class="transback" onclick="OpenSignin()">sign in</button></p></div>
+        
         <img src="https://sureify.com/wp-content/uploads/2021/06/sureify-logo.png" width="100"/><br>
     </div>
 </div>
