@@ -15,7 +15,7 @@
         .container{
             position: relative;
             width:40%;
-            height: 60%;
+            height: 55%;
             max-width: 400px;
             min-width: 350px;
             min-height: 400px;
@@ -108,11 +108,12 @@
         }
         #eleonsignup{
             display: none;
-            transition-duration: 0.4s;
+            transition-duration: 0.3s;
+            transform: scale(3);
         }
         #eleonsignin{
-            display: none;
-            transition-duration: 0.4s;
+            display: block;
+            transition-duration: 0.3s;
         }
         
     </style>
@@ -142,11 +143,12 @@
         async function OpenSignin(){
             document.getElementById("signin").style.display="block";
             document.getElementById("signup").style.display="none";
-            document.getElementById("texonbutton").textContent="sign in"
-            document.getElementById("container").style.height="55%"
+            document.getElementById("texonbutton").textContent="sign in" 
             signup=document.getElementById("eleonsignup")
-            signup.style.transform="scale(3)"
-            await sleep(400);
+            signup.style.transform="scale(2.5)"
+            document.getElementById("container").style.height="55%"
+            await sleep(300);
+            
             signup.style.display="none"
             signin=document.getElementById("eleonsignin")
             signin.style.display="block"
@@ -239,7 +241,7 @@
     </script>
 </head>
     <div class="container" id="container">
-    <body onload="OpenSignin()">
+    <body>
     <div class="bg-img"></div>
     <div class="content">
         
