@@ -163,10 +163,11 @@
             var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if (!filter.test(email.value)) {
             alert('Please provide a valid email address');
-            
+            email.style.background="red"
             
             return false;
             }
+            email.style.background="green"
            return true
         }
         function checkFName() {
@@ -175,9 +176,10 @@
             var filter = /^[a-zA-Z]{1,}$/;
             if (!filter.test(email.value)) {
             alert('Please provide a valid Firstname');
-            email.focus;
+            email.style.background="red"
             return false;
             }
+            email.style.background="green"
            return true
         }
         function checkLName() {
@@ -186,9 +188,10 @@
             var filter = /^[a-zA-Z]{1,}$/;
             if (!filter.test(email.value)) {
             alert('Please provide a valid LastName');
-            email.focus;
+            email.style.background="red"
             return false;
             }
+            email.style.background="green"
            return true
         }
         function checkNumber() {
@@ -197,9 +200,10 @@
             var filter = /^(9|8|7|6)[0-9]{9}$/;
             if (!filter.test(email.value)) {
             alert('Please provide a valid mobile Number');
-            email.focus;
+            email.style.background="red"
             return false;
             }
+            email.style.background="green"
            return true
         }
         function checkPassword1(){
@@ -215,9 +219,10 @@
             var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if (!filter.test(email.value)) {
             alert('Please provide a valid email address');
-            email.focus;
+            email.style.background="red"
             return false;
             }
+            email.style.background="green"
            return true
 
 
@@ -256,7 +261,7 @@
             </div>
             <div id="eleonsignup">
                 <form>
-                <input type="email" name="email" placeholder="Email" id="txtEmail" onchange="checkEmail()" value="mail@mail-domain.com"/>
+                <input type="email" name="email" placeholder="Email" id="txtEmail" onchanged="checkEmail()" value="mail@mail-domain.com"/>
                 <input type="text" name="first" placeholder="your first name here" id="txtfname" onchange="checkFName()" value="firstname">
                 <input type="text" name="last" placeholder="your last name here" id="txtlname" onchange="checkLName()" value="lastname">
                 <input type="text" name="mobile" placeholder="your mobile number"id="txtNum" onchange="checkNumber()" value="910000">
